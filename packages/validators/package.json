@@ -7,6 +7,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
+    },
+    "./forms/*": {
+      "types": "./dist/forms/*.d.ts",
+      "default": "./src/forms/*.ts"
     }
   },
   "license": "MIT",
