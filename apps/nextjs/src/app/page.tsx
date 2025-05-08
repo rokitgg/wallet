@@ -1,36 +1,11 @@
-import { Suspense } from "react";
+import { Footer } from "~/components/layout/footer";
+import { EmailSetup } from "./_components/email";
 
-import { AuthShowcase } from "./_components/auth-showcase";
-import {
-  CreatePostForm,
-  PostCardSkeleton,
-  PostList,
-} from "./_components/posts";
-
-export default function HomePage() {
+export default function Home() {
   return (
-    <main className="container h-screen py-16">
-      <div className="flex flex-col items-center justify-center gap-12">
-        <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-          Ultimate <span className="text-primary">Starter</span> Kit
-        </h1>
-        <AuthShowcase />
-
-        <CreatePostForm />
-        <div className="w-full max-w-2xl overflow-y-scroll">
-          <Suspense
-            fallback={
-              <div className="flex w-full flex-col gap-4">
-                <PostCardSkeleton />
-                <PostCardSkeleton />
-                <PostCardSkeleton />
-              </div>
-            }
-          >
-            <PostList />
-          </Suspense>
-        </div>
-      </div>
+    <main className="flex flex-col items-center justify-center min-h-screen px-4 max-w-sm mx-auto">
+      <EmailSetup />
+      <Footer />
     </main>
   );
 }
