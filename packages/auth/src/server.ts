@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { betterAuth } from "better-auth";
 import { getSessionCookie } from "better-auth/cookies";
-import { openAPI } from "better-auth/plugins";
+import { openAPI, emailOTP } from "better-auth/plugins";
 
 import { env } from "../env";
 
@@ -16,7 +16,15 @@ export const auth = betterAuth({
   appName: env.BETTER_AUTH_APP_NAME,
   secret: env.BETTER_AUTH_SECRET,
   baseUrl: env.BETTER_AUTH_URL,
-  plugins: [openAPI()],
+  plugins: [
+    openAPI(),
+    emailOTP({
+      async sendVerificationOTP({ email, otp, type }) {
+        // Implement the sendVerificationOTP method to send the OTP to the user's email address
+        console.log(email, otp, type);
+      },
+    }),
+  ],
   emailAndPassword: {
     enabled: false,
   },

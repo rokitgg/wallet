@@ -1,5 +1,6 @@
 import { createAuthClient } from "better-auth/react";
 import { toast } from "sonner";
+import { emailOTPClient } from "better-auth/client/plugins";
 
 import { env } from "../env";
 
@@ -11,6 +12,7 @@ export const auth = createAuthClient({
       }
     },
   },
+  plugins: [emailOTPClient()],
   baseUrl: env.BETTER_AUTH_URL as string,
 });
 
